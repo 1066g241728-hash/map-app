@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <title>お小遣い帳</title>
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <!-- Google Fonts（読みやすい日本語フォント） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/education.js" defer></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>お小遣い帳</h1>
+
+        <!-- ダッシュボードエリア -->
+        <section class="card dashboard">
+            <h2>ダッシュボード</h2>
+            
+            <!-- 集計結果をグリッドカード表示 -->
+            <div class="summary-cards">
+                <div class="summary-card income-box">
+                    <span class="summary-label">収入の合計</span>
+                    <span id="incomeTotal" class="summary-value">-</span>
+                </div>
+                <div class="summary-card outgo-box">
+                    <span class="summary-label">支出の合計</span>
+                    <span id="outgoTotal" class="summary-value">-</span>
+                </div>
+                <div class="summary-card total-box">
+                    <span class="summary-label">現在の所持金</span>
+                    <span id="money" class="summary-value">-</span>
+                </div>
+            </div>
+
+            <h3 class="sub-title">お小遣いの記録一覧</h3>
+            <div class="table-wrapper">
+                <table id="moneyRecord" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>名目</th>
+                            <th>金額</th>
+                            <th>フロー</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- JSで動的に追加される行 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 記録フォーム -->
+        <section class="card">
+            <h2>記録する</h2>
+            <form id="insertForm" autocomplete="off">
+                <div class="form-group">
+                    <label>名目</label>
+                    <input type="text" name="title" placeholder="例：お小遣い、お菓子">
+                </div>
+                <div class="form-group">
+                    <label>金額</label>
+                    <input type="number" name="price" placeholder="例：500">
+                </div>
+                <div class="form-group">
+                    <label>種類</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="flow" value="1"> 収入</label>
+                        <label class="radio-label"><input type="radio" name="flow" value="-1" checked> 支出</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="insert()">登録する</button> 
+            </form>
+        </section>
+
+        <!-- 修正フォーム -->
+        <section class="card">
+            <h2>修正する</h2>
+            <form id="updateForm" autocomplete="off">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="number" name="id" placeholder="修正したいID">
+                </div>
+                <div class="form-group">
+                    <label>名目</label>
+                    <input type="text" name="title" placeholder="変更後の名目">
+                </div>
+                <div class="form-group">
+                    <label>金額</label>
+                    <input type="number" id="price" name="price" placeholder="変更後の金額">
+                </div>
+                <div class="form-group">
+                    <label>種類</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="flow" value="1"> 収入</label>
+                        <label class="radio-label"><input type="radio" name="flow" value="-1" checked> 支出</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="update()">更新する</button> 
+            </form>
+        </section>
+
+        <!-- 削除フォーム -->
+        <section class="card">
+            <h2>削除する</h2>
+            <form id="deleteForm" autocomplete="off">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="number" name="id" placeholder="削除したいID">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="deleteDB()">削除する</button> 
+            </form>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* 全体の基本設定（フォントを美しく読みやすく） */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif;
+    background-color: #f0f4f8;
+    color: #2d3748;
+    line-height: 1.6;
+    padding: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* アプリタイトル */
+h1 {
+    text-align: center;
+    color: #1a202c;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* カード形式のセクション */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2b6cb0;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 8px;
+}
+
+.sub-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4a5568;
+    margin: 20px 0 10px 0;
+}
+
+/* --- ダッシュボード（集計表示）の改善 --- */
+.summary-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.summary-card {
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 収入カード */
+.income-box {
+    background-color: #f0fff4;
+    border: 1px solid #c6f6d5;
+}
+.income-box .summary-label { color: #276749; }
+.income-box .summary-value { color: #2f855a; }
+
+/* 支出カード */
+.outgo-box {
+    background-color: #fff5f5;
+    border: 1px solid #fed7d7;
+}
+.outgo-box .summary-label { color: #9b2c2c; }
+.outgo-box .summary-value { color: #c53030; }
+
+/* 所持金カード（全幅表示） */
+.total-box {
+    grid-column: span 2;
+    background-color: #ebf8ff;
+    border: 1px solid #bee3f8;
+    padding: 16px;
+}
+.total-box .summary-label { color: #2c5282; font-size: 13px; }
+.total-box .summary-value { color: #2b6cb0; font-size: 24px; }
+
+.summary-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.summary-value {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* --- 記録テーブルの改善 --- */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.data-table th, 
+.data-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.data-table th {
+    background-color: #f7fafc;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #fbcfe8; /* 偶数行をほんのり色付けして読みやすく */
+    background-color: #f8fafc;
+}
+
+/* --- フォームと入力要素 --- */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #4a5568;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: #f8fafc;
+    transition: all 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3182ce;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+.radio-group {
+    display: flex;
+    gap: 24px;
+    padding: 6px 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #3182ce;
+}
+
+/* ボタンデザイン */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary { background-color: #3182ce; }
+.btn-primary:hover { background-color: #2b6cb0; }
+
+.btn-secondary { background-color: #718096; }
+.btn-secondary:hover { background-color: #4a5568; }
+
+.btn-danger { background-color: #e53e3e; }
+.btn-danger:hover { background-color: #c53030; }
